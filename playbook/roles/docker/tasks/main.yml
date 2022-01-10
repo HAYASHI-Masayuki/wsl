@@ -1,0 +1,34 @@
+---
+- name: Install packages
+  apt:
+    update_cache: yes
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+  become: yes
+  become_user: root
+
+- name: Add GPG key
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  become: yes
+  become_user: root
+
+- name: Set up stable repository
+  shell: |
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+  become: yes
+  become_user: root
+
+- name: Install Docker Engine
+  apt:
+    update_cache: yes
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+  become: yes
+  become_user: root
