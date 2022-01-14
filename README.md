@@ -9,4 +9,6 @@
 
 ## sshd自動起動
 
-`wsl --user root --exec /usr/sbin/service ssh start` を、ホスト側でタスクスケジューラに設定して、ログオン時に毎回実行するようにしておく。
+`wsl --exec bash /home/<USER>/wsl/startup.sh` を、ホスト側でタスクスケジューラに設定して、ログオン時に毎回実行するようにしておく。
+
+なお、今後Windows 11に移行した際は、wsl.confのboo.commandあたりで設定するとよさそう。
