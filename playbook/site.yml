@@ -9,6 +9,7 @@
     - lftp
     - locale
     - ripgrep
+    - ssh_config
     - tig
     - vim-kaoriya
     - zplug

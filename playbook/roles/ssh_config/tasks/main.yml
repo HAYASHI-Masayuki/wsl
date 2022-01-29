@@ -1,0 +1,11 @@
+---
+- name: Set ssh_config
+  blockinfile:
+    dest: /home/{{ ansible_user_id }}/.ssh/config
+    marker: "# {mark} 'Set ssh_config' BLOCK"
+    block: |
+      Host *
+      	PasswordAuthentication no
+      	StrictHostKeyChecking no
+    create: yes
+    mode: 0600
