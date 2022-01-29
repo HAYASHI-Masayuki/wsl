@@ -1,0 +1,13 @@
+---
+- name: Install ja_JP locale
+  apt:
+    update_cache: yes
+    pkg:
+      - language-pack-ja-base
+  become: yes
+  become_user: root
+
+- name: Update locale
+  shell: update-locale LANG=ja_JP.UTF-8
+  become: yes
+  become_user: root
