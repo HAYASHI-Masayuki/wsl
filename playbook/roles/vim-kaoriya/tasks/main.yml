@@ -1,0 +1,25 @@
+---
+- name: Install dependencies for vim
+  apt:
+    update_cache: yes
+    pkg: 
+      - autoconf
+      - gcc
+      - libmigemo-dev
+      - libncurses-dev
+      - make
+  become: yes
+  become_user: root
+
+- name: Build vim if it is not built
+  script: build.sh
+  args:
+    creates: /home/{{ ansible_user_id }}/src/vim-kaoriya
+    chdir: /home/{{ ansible_user_id }}
+
+- name: Set as default editor
+  shell: |
+    update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 100
+    update-alternatives --set editor /usr/local/bin/vim
+  become: yes
+  become_user: root

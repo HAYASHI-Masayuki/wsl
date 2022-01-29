@@ -2,8 +2,10 @@
 - hosts: all
   roles:
     - account
+    - cmigemo
     - docker
     - docker-compose
     - homeshick
     - lftp
     - locale
+    - vim-kaoriya

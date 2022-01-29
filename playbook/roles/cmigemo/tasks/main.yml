@@ -1,0 +1,8 @@
+---
+- name: Install cmigemo
+  apt:
+    update_cache: yes
+    pkg:
+      - cmigemo
+  become: yes
+  become_user: root
