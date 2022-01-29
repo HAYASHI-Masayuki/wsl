@@ -8,6 +8,7 @@
     - homeshick
     - lftp
     - locale
+    - tig
     - vim-kaoriya
     - zplug
     - zsh
