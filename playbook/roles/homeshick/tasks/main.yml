@@ -1,0 +1,16 @@
+---
+- name: Clone homeshick repo
+  git:
+    repo: https://github.com/andsens/homeshick.git
+    dest: /home/{{ ansible_user_id }}/.homesick/repos/homeshick
+
+- name: Install homeshick
+  lineinfile:
+    dest: /home/{{ ansible_user_id }}/.bashrc
+    line: source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+
+- name: Clone castles
+  # TODO: 変数で指定できるように
+  shell: |
+    homeshick clone -b git@github.com:HAYASHI-Masayuki/.vimrc.git
+    homeshick link .vimrc

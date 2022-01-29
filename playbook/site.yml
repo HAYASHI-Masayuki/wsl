@@ -4,5 +4,6 @@
     - account
     - docker
     - docker-compose
+    - homeshick
     - lftp
     - locale
