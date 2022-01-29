@@ -1,0 +1,29 @@
+---
+- name: Make src dir
+  file:
+    path: ~/src
+    state: directory
+
+- name: Download tarball
+  get_url:
+    url: https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
+    dest: ~/src
+    checksum: sha256:ee4e0751ab108b6da4f47c52da187d5177dc371f0f512a7caaec5434e711c091
+
+- name: Unarchive tarball
+  unarchive:
+    src: ~/src/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
+    dest: ~/src
+    remote_src: yes
+
+- name: Make bin dir
+  file:
+    path: ~/bin
+    state: directory
+
+- name: Install ripgrep
+  copy:
+    src: ~/src/ripgrep-13.0.0-x86_64-unknown-linux-musl/rg
+    dest: ~/bin/rg
+    mode: 0700
+    remote_src: yes
