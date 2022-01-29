@@ -1,0 +1,9 @@
+---
+- name: Check zplug directory
+  stat:
+    path: ~/.zplug
+  register: zplug
+
+- name: Install zplug
+  shell: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  when: zplug.stat.exists == False

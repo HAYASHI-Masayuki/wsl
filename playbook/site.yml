@@ -9,3 +9,5 @@
     - lftp
     - locale
     - vim-kaoriya
+    - zplug
+    - zsh

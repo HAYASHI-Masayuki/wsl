@@ -1,0 +1,15 @@
+---
+- name: Install zsh
+  apt:
+    update_cache: yes
+    pkg:
+      - zsh
+  become: yes
+  become_user: root
+
+- name: Set zsh as default
+  user:
+    name: '{{ ansible_user_id }}'
+    shell: /bin/zsh
+  become: yes
+  become_user: root
