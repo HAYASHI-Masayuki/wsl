@@ -1,0 +1,23 @@
+---
+- name: Install phpenv and php-build using phpenv-installer
+  shell: curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
+
+- name: Install dependencies for php 1/2
+  apt:
+    update_cache: yes
+    pkg: 
+      - php7.4
+    state: build-dep
+  become: yes
+  become_user: root
+
+- name: Install dependencies for php 2/2
+  apt:
+    update_cache: yes
+    pkg: 
+      - libreadline-dev
+  become: yes
+  become_user: root
+
+- name: Install php {{ php.version }}
+  shell: '{{ php.build_env | default(None) }}~/.phpenv/bin/phpenv install {{ php.version }}'

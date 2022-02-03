@@ -1,0 +1,8 @@
+---
+- name: Enable deb-src on sources.list
+  replace:
+    path: /etc/apt/sources.list
+    regexp: '^# (deb-src.*)'
+    replace: '\1'
+  become: yes
+  become_user: root

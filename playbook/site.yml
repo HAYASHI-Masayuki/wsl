@@ -8,6 +8,7 @@
     - homeshick
     - lftp
     - locale
+    - php
     - ripgrep
     - ssh_config
     - tig
