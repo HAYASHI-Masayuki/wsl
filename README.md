@@ -7,7 +7,7 @@
 3. 後はSSHで入れるので、入ってAnsible叩く。
 
 
-## sshd自動起動
+## sshd, docker他自動起動
 
 `wsl --exec bash /home/<USER>/wsl/startup.sh` を、ホスト側でタスクスケジューラに設定して、ログオン時に毎回実行するようにしておく。
 
