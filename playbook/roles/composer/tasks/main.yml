@@ -1,0 +1,22 @@
+---
+- name: Make bin directory
+  file:
+    path: ~/bin
+    state: directory
+
+- name: Determine if composer is already installed
+  shell: which composer
+  register: composer_is_installed
+  changed_when: false
+  failed_when: composer_is_installed.rc not in [0, 1]
+
+- name: Install composer
+  # https://getcomposer.org/download/
+  shell: |
+    ~/.phpenv/shims/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    ~/.phpenv/shims/php -r "if (hash_file('sha384', 'composer-setup.php') === rtrim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    ~/.phpenv/shims/php composer-setup.php
+    ~/.phpenv/shims/php -r "unlink('composer-setup.php');"
+  args:
+    chdir: '/home/{{ ansible_user_id }}/bin'
+  when: composer_is_installed.rc == 1

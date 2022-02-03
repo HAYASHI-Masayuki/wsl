@@ -3,6 +3,7 @@
   roles:
     - account
     - cmigemo
+    - composer
     - docker
     - docker-compose
     - homeshick
