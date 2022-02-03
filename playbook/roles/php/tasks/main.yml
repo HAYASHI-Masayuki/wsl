@@ -19,5 +19,12 @@
   become: yes
   become_user: root
 
+- name: Determine if PHP {{ php.version }} is already installed
+  shell: ~/.phpenv/bin/phpenv versions | grep -q {{ php.version }}
+  register: php_is_installed
+  changed_when: false
+  failed_when: php_is_installed.rc not in [0, 1]
+
 - name: Install php {{ php.version }}
   shell: '{{ php.build_env | default(None) }}~/.phpenv/bin/phpenv install {{ php.version }}'
+  when: php_is_installed.rc == 1
