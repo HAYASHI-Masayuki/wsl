@@ -11,4 +11,4 @@
 
 `wsl --exec bash /home/<USER>/wsl/startup.sh` を、ホスト側でタスクスケジューラに設定して、ログオン時に毎回実行するようにしておく。
 
-なお、今後Windows 11に移行した際は、wsl.confのboo.commandあたりで設定するとよさそう。
+なお、今後Windows 11に移行した際は、wsl.confのboot.commandあたりで設定するとよさそう。
