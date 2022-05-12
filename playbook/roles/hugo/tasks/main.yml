@@ -1,0 +1,29 @@
+---
+- name: Make src dir
+  file:
+    path: ~/src/hugo_0.96.0_Linux-64bit
+    state: directory
+
+- name: Download tarball
+  get_url:
+    url: https://github.com/gohugoio/hugo/releases/download/v0.96.0/hugo_0.96.0_Linux-64bit.tar.gz
+    dest: ~/src
+    checksum: sha256:8d8302ea28c871e5de20fe45f2255bf4ad04e577935209d0f19511278a86560a
+
+- name: Unarchive tarball
+  unarchive:
+    src: ~/src/hugo_0.96.0_Linux-64bit.tar.gz
+    dest: ~/src/hugo_0.96.0_Linux-64bit
+    remote_src: yes
+
+- name: Make bin dir
+  file:
+    path: ~/bin
+    state: directory
+
+- name: Install hugo
+  copy:
+    src: ~/src/hugo_0.96.0_Linux-64bit/hugo
+    dest: ~/bin/hugo
+    mode: 0700
+    remote_src: yes
