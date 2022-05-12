@@ -10,6 +10,7 @@
     - hugo
     - lftp
     - locale
+    - nodejs
     - php
     - ripgrep
     - ssh_config

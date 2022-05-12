@@ -1,0 +1,6 @@
+---
+- name: Install nvm
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+- name: Install Node.js {{ nodejs.version }}
+  shell: /bin/zsh -lc '. ~/.zshrc && nvm install {{ nodejs.version }}'
