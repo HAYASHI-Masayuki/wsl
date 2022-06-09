@@ -1,0 +1,4 @@
+---
+- name: Install tmuxp
+  pip:
+    name: tmuxp

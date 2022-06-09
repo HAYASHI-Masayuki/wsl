@@ -1,0 +1,8 @@
+---
+- name: Install pip
+  apt: 
+    update_cache: yes
+    pkg:
+      - python3-pip
+  become: yes
+  become_user: root
